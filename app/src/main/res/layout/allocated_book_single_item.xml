@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="allocationDetails"
+            type="com.csapps.bookshelf.data.entities.UserBookAllocation" />
+
+        <variable
+            name="removeBorrowerListener"
+            type="com.csapps.bookshelf.ui.adapter.AllotedBooksRecyclerAdapter.RemoveBorrowerListener" />
+
+        <variable
+            name="changeBorrowerListener"
+            type="com.csapps.bookshelf.ui.adapter.AllotedBooksRecyclerAdapter.ChangeBorrowerListener" />
+
+        <variable
+            name="adapterPosition"
+            type="Integer" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="@drawable/grey_round_rect"
+        android:layout_marginBottom="16dp"
+        >
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/oneThirdSpace"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            app:layout_constraintGuide_percent="0.3"
+            android:orientation="vertical"
+            />
+
+        <TextView
+            android:id="@+id/nameLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Allocated to: "
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/oneThirdSpace"
+            />
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{allocationDetails.userName}"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/oneThirdSpace"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/mobileLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Mobile: "
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/userName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/oneThirdSpace"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/userMobile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{allocationDetails.userMobile}"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/userName"
+            app:layout_constraintStart_toEndOf="@id/oneThirdSpace"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="10dp"
+            />
+
+
+        <TextView
+            android:id="@+id/bookNameLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Book Name: "
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/userMobile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/oneThirdSpace"
+            android:layout_marginTop="10dp"
+            />
+
+
+        <TextView
+            android:id="@+id/bookName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{allocationDetails.bookName}"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/userMobile"
+            app:layout_constraintStart_toEndOf="@id/oneThirdSpace"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/changeBorrower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="Change Borrower"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:onClick="@{()->changeBorrowerListener.onChange(allocationDetails)}"
+            android:background="@drawable/blue_curved_rect"
+            app:layout_constraintTop_toBottomOf="@id/bookName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/removeBorrower"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="5dp"
+            />
+
+        <TextView
+            android:id="@+id/removeBorrower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="Remove Borrower"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:onClick="@{()->removeBorrowerListener.onRemove(allocationDetails.mappingId, adapterPosition)}"
+            android:background="@drawable/blue_curved_rect"
+            app:layout_constraintTop_toBottomOf="@id/bookName"
+            app:layout_constraintStart_toEndOf="@id/changeBorrower"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="5dp"
+            />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

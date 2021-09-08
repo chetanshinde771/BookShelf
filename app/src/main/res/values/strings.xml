@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">BookShelf</string>
+    <string name="borrow_book_title">Fill in book borrower\'s details</string>
+    <string name="no_data">No data found</string>
+
+    <string-array name="book_names">
+        <item>Select a book</item>
+        <item>War and Peace</item>
+        <item>Song of Solomon</item>
+        <item>Lord of the Rings</item>
+        <item>Language of flowers</item>
+    </string-array>
+</resources>
