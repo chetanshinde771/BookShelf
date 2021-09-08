@@ -1,5 +1,5 @@
 # BookShelf
-Sample app to demonstrate how to store and retrieve data from Room database.
+Sample app to demonstrating CRUD operations on Room database.
 
 The project uses:
 - MVVM achitecture
